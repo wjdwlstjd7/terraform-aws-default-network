@@ -5,7 +5,7 @@ resource "aws_subnet" "public" {
   cidr_block = var.public_subnet_cidr_list[count.index]
   availability_zone = format("${var.region[var.region_code]}%s", element(var.azs, count.index))
   tags = {
-    Name = format("SUNBNET-MSA-2%s-PUB", element(var.azs, count.index))
+    Name = format("SUBNET-MSA-2%s-PUB", element(var.azs, count.index))
   }
   lifecycle {
     ignore_changes = [

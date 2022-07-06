@@ -52,5 +52,24 @@
 | `private_route_table` | private route table 목록 |
 | `public_route_table` | public route table 목록 |
 
+## Usage
+
+# Simple Example
+
+* 모듈을 사용하는 방법의 예입니다.
+
+```
+module "default_network" {
+  source = "wjdwlstjd7/default-network/aws"
+  version = "1.0.1"
+
+  # For network resources
+  vpc_cidr = var.vpc_cidr
+  ap_subnet_cidr_list = var.ap_subnet_cidr_list
+  db_subnet_cidr_list = var.db_subnet_cidr_list
+  public_subnet_cidr_list = var.public_subnet_cidr_list
+  tgwa_subnet_cidr_list = var.tgwa_subnet_cidr_list
+  azs = var.azs
+}
 
 ```
