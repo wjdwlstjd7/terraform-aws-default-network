@@ -68,3 +68,8 @@ variable "db_subnet_cidr_list" {
   description = "생성될 VPC의 db subnet cidr 목록"
 
 }
+
+variable "cluster_name" {
+  type = string
+  description = "cluster name"
+}

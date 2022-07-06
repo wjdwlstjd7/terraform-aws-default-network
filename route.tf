@@ -5,6 +5,7 @@ resource "aws_route_table" "public" {
     aws_internet_gateway.main]
   tags = merge(local.tags, {
     Name = "RT-MAS-PUBLIC"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   })
   lifecycle {
     ignore_changes = [
@@ -26,6 +27,7 @@ resource "aws_route_table" "app" {
     aws_nat_gateway.main]
   tags   = merge(local.tags, {
     Name = format("RT-MSA-2%s-app", element(var.azs, count.index))
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   })
   lifecycle {
     ignore_changes = [
@@ -46,6 +48,7 @@ resource "aws_route_table" "db" {
   vpc_id = aws_vpc.main.id
   tags = merge(local.tags, {
     Name = format("RT-MSA-2%s-DB", element(var.azs, count.index))
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   })
   lifecycle {
     ignore_changes = [

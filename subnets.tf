@@ -6,6 +6,7 @@ resource "aws_subnet" "public" {
   availability_zone = format("${var.region[var.region_code]}%s", element(var.azs, count.index))
   tags = {
     Name = format("SUBNET-MSA-2%s-PUB", element(var.azs, count.index))
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   }
   lifecycle {
     ignore_changes = [
@@ -22,6 +23,7 @@ resource "aws_subnet" "app" {
   vpc_id = aws_vpc.main.id
   tags = {
     Name = format("SUBNET-MSA-2%s-APP", element(var.azs, count.index))
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   }
   lifecycle {
     ignore_changes = [
@@ -38,6 +40,7 @@ resource "aws_subnet" "db" {
   vpc_id = aws_vpc.main.id
   tags = {
     Name = format("SUBNET-MAS-2%s-DB", element(var.azs, count.index))
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   }
   lifecycle {
     ignore_changes = [

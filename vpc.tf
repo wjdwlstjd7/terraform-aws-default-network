@@ -8,6 +8,7 @@ resource "aws_vpc" "main" {
 
   tags = {
     Name = "VPC-HX-MSA"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   }
   lifecycle {
     ignore_changes = [
@@ -22,6 +23,7 @@ resource "aws_default_route_table" "main" {
 
   tags = {
     Name = "RT-default"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   }
   lifecycle {
     ignore_changes = [
@@ -34,6 +36,7 @@ resource "aws_default_vpc_dhcp_options" "default" {
 
   tags = {
     Name = "DHCP-default"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   }
 
   depends_on = [
@@ -68,6 +71,7 @@ resource "aws_default_network_acl" "default" {
   }
   tags = {
     Name = "NACL-default"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   }
   lifecycle {
     ignore_changes = [
@@ -82,6 +86,7 @@ resource "aws_default_security_group" "default" {
 
   tags = {
     Name = "SG-default"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   }
   lifecycle {
     ignore_changes = [

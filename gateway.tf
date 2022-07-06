@@ -4,6 +4,7 @@ resource "aws_internet_gateway" "main" {
 
   tags = {
     Name = "IGW-MSA"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   }
   lifecycle {
     ignore_changes = [
@@ -19,6 +20,7 @@ resource "aws_nat_gateway" "main" {
 
   tags = {
     Name = "NAT-MAS"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   }
   lifecycle {
     ignore_changes = [
