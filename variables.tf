@@ -73,3 +73,18 @@ variable "cluster_name" {
   type = string
   description = "cluster name"
 }
+
+variable "aws_default_region" {
+  description = "사용하는 account default_region"
+  type = string
+}
+
+variable "aws_access_key" {
+  description = "사용하는 account access key"
+  type = string
+}
+
+variable "aws_secret_key" {
+  description = "사용하는 account secret key"
+  type = string
+}
