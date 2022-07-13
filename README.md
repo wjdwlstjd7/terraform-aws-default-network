@@ -61,7 +61,7 @@
 ```
 module "default_network" {
   source = "wjdwlstjd7/default-network/aws"
-  version = "1.0.1"
+  version = "2.0.0"
 
   # For network resources
   vpc_cidr = var.vpc_cidr
